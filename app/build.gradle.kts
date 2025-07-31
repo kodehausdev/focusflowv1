@@ -5,6 +5,9 @@ plugins {
 
 
 }
+kotlin {
+    jvmToolchain(11) // Specify the JDK version you want to use
+}
 
 android {
     namespace = "com.fatokifury.focus_flow_v1"
