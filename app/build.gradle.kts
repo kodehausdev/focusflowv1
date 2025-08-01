@@ -11,7 +11,7 @@ kotlin {
 
 android {
     namespace = "com.fatokifury.focus_flow_v1"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.fatokifury.focus_flow_v1"
@@ -32,13 +32,13 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+//    compileOptions {
+//        sourceCompatibility = JavaVersion.VERSION_11
+//        targetCompatibility = JavaVersion.VERSION_11
+//    }
+//    kotlinOptions {
+//        jvmTarget = "11"
+//    }
     buildFeatures {
         compose = true
     }
@@ -74,4 +74,35 @@ android {
         debugImplementation(libs.androidx.ui.tooling)
         debugImplementation(libs.androidx.ui.test.manifest)
     }
+
+    dependencies {
+        // Your existing dependencies
+        implementation(libs.androidx.core.ktx)
+        // ... etc.
+
+        // Force Kotlin standard library version
+        implementation(platform(libs.kotlin.bom)) // Add this line if using Kotlin BOM
+        implementation(libs.kotlin.stdlib)     // Or ensure this uses your project's version if not using BOM
+
+        // Or, more forcefully, if the above doesn't work:
+        constraints {
+            implementation("org.jetbrains.kotlin:kotlin-stdlib") {
+                version {
+                    strictly(libs.versions.kotlin.get()) // Force it to your 'kotlin' version from libs.versions.toml
+                }
+            }
+            implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7") {
+                version {
+                    strictly(libs.versions.kotlin.get())
+                }
+            }
+            implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8") {
+                version {
+                    strictly(libs.versions.kotlin.get())
+                }
+            }
+            // Add other kotlin-reflect or other kotlin modules if needed
+        }
+    }
+
 }
