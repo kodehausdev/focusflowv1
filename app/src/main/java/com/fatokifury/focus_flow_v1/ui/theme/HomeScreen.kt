@@ -35,7 +35,7 @@ fun HomeScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
-         Apply padding to the content within the LazyColumn, not the LazyColumn itself if background needs to fill edges
+         // Apply padding to the content within the LazyColumn, not the LazyColumn itself if background needs to fill edges
         contentPadding = PaddingValues(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally // Children items will be centered by default
     ) {
